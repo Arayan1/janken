@@ -1,10 +1,13 @@
 #comp {
+	width:800px;
 	margin-left: 70px;
 	margin-top: 50px;
+	height:40px
 }
 
 #you {
-	width: 670px;
+	position:absolute;
+	width: 510px;
 	text-align: right;
 	margin-bottom: 50px;
 	vertical-align: 70px;
