@@ -8,12 +8,12 @@
  <link rel="stylesheet" href="style.css">
  </head>
  
-
  <body bgcolor="#FFFFFF">
+ 
  <div>
   <img src="images/picture3.jpg" name="yourHand" width="250" height="207">
  
-  <img src="images/picture_start.jpg" width="250" height="207" onclick="check()", sound()>
+  <img src="images/picture_start.jpg" width="250" height="207" onclick="check()">
  
   <img src="images/picture3.jpg" name="compHand" width="250" height="207">
  </div>
@@ -66,6 +66,8 @@
  	numWinBox = document.infoForm.numWin;
  	pointBox.value = 0;		// 得点表示欄を0で初期化
  	numWinBox.value = 0;	// 連勝数表示欄を0で初期化
+ 	
+ 	sound();	// サウンド "はじめ !"
  }
  
  function check() {	// スタートボタンを一度押したらジャンケンが一度終了するまで押せないようにする。
