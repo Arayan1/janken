@@ -1,11 +1,44 @@
+body{
+width:980px;
+margin:0 auto;
+}
+
 #comp {
-	margin-left: 70px;
-	margin-top: 50px;
+	margin-left:600px;
+	margin-top: 10px;
+		width: 830px;
 }
 
 #you {
-	width: 670px;
+	width: 130px;
 	text-align: right;
 	margin-bottom: 50px;
 	vertical-align: 70px;
+	float:left;
+}
+
+img{
+clear:both;
+}
+.box{
+clear:both;
+width:900px;
+margin:0;
+}
+.box_2{
+margin-bottom:0px;
+}
+
+img.judge{
+display:block;
+padding:10px;
+background:#aaa;
+margin-left:250px;
+	margin-bottom: 50px;
+	display:none;
+}
+h1{
+width:750px;
+
+text-align:center;
 }
