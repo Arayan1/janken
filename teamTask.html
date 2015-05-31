@@ -8,58 +8,128 @@
  <link rel="stylesheet" href="style.css">
  </head>
  
-
- <body bgcolor="#FFFFFF">
- <h1>じゃんけんゲーム</h1>
+ <body bgcolor="#aaccee">
+ 
+ <div id="contents">
+ 
+ <h1><img src="images/h1.png"></h1>
  <div class="box_2">
  
-   <img src="images/picture3.jpg" name="yourHand" width="250" height="207">
-     <img src="images/picture_start.jpg" width="250" height="207" onclick="changeStart()">
- <img src="images/picture3.jpg" name="compHand" width="250" height="207">
- </div>
+   <img src="images/picture3.jpg" name="yourHand" width="200" height="207">
+   
+     <img src="images/picture_start.jpg" width="200" height="207" onclick="changeStart()">
+ <img src="images/picture3.jpg" name="compHand" width="200" height="207">
+ </div><!--box2--->
  
- <div id="you">あなた</div>
- <div id="comp">コンピュータ</div>
-   <img id="judge" src="images/win_or_lose.jpg" name="winOrLose" width="250" height="207">
+ <div id="comp">あなた<span id="you">コンピュータ</span></div><!--comp--->
  
+  <h1 class="color">ここから選んでね！！</h1>
  <div class="box">
- <img src="images/picture0.jpg" width="250" height="207" onclick="changeStop(0)">
+ <img src="images/picture0.jpg" width="200" height="207" onclick="changeStop(0)">
  
- <img src="images/picture1.jpg" width="250" height="207" onclick="changeStop(1)">
+ <img src="images/picture1.jpg" width="200" height="207" onclick="changeStop(1)">
  
- <img src="images/picture2.jpg" width="250" height="207" onclick="changeStop(2)">
- </div>
+ <img src="images/picture2.jpg" width="200" height="207" onclick="changeStop(2)">
+ </div><!--box"--->
  
+ <img id="judge" src="images/win_or_lose.jpg" name="winOrLose" width="200" height="207" >
 
+
+   <h1 class="color">得点表</h1>
+ <form name="infoForm">
+ <p>得点：<input type="text" name="point"></p>
+ <p>連勝：<input type="text" name="numWin"></p>
+ </form>
+  
+   <audio id="start-sound" preload="auto">
+  <source src="audio/start.mp3" type="audio/mp3">
+  </audio>
+  
+   <audio id="win-sound" preload="auto">
+  <source src="audio/win.mp3" type="audio/mp3">
+  </audio>
+  
+  <audio id="lose-sound" preload="auto">
+  <source src="audio/lose.mp3" type="audio/mp3">
+  </audio>
+  
+   <audio id="even-sound" preload="auto">
+  <source src="audio/even.mp3" type="audio/mp3">
+  </audio>
+  </div><!--contents"--->
   
  <script type="text/javascript">
+ var startFlag = 0;	// スタートを選ぶまでは手を選択出来ないようにする
  var timer;
  var num;
+ var pointBox;		// 得点表示用
+ var numWinBox;		// 連勝数表示用
+ var point;			// 得点
+ var numWin;		// 連勝数
+ 
+ window.onload = init;
+ function init() {
+ 	point = 0;	// 得点を0で初期化
+ 	numWin = 0;	// 連勝数を0で初期化
+ 	pointBox = document.infoForm.point;	// テキストボックスに反映
+ 	numWinBox = document.infoForm.numWin;
+ 	pointBox.value = 0;		// 得点表示欄を0で初期化
+ 	numWinBox.value = 0;	// 連勝数表示欄を0で初期化
+ 	
+ 	sound();	// サウンド "はじめ !"
+ }
+ 
+ function check() {	// スタートボタンを一度押したらジャンケンが一度終了するまで押せないようにする。
+ 	if (startFlag == 0) {	// 手を選択できない状態のときのみ処理を行う
+ 		changeStart();
+ 	}
+ }
  function changeStart() {
+ 	startFlag = 1;	// 手を選べるように設定
  	num= Math.floor(Math.random()*3);
  	document.compHand.src="images/picture" + num + ".jpg";
  	
- 	timer = setTimeout("changeStart()",100);
+ 	timer = setTimeout("changeStart()",10);
+ }
+ 
+ function sound(){
+ 		
+ 		document.getElementById("start-sound").play();
  }
  
  function changeStop(i) {
- 	clearTimeout(timer);
- 	document.yourHand.src="images/picture" + i + ".jpg";
+ if (startFlag == 1) {	// 手が選べる状態のときのみ処理を行う
+ 		clearTimeout(timer);
+ 		document.yourHand.src="images/picture" + i + ".jpg";
  	
- 	var judge = (i - num + 3) % 3;
+ 		var judge = (i - num + 3) % 3;
  	
- 	if (judge == 2){
- 		document.winOrLose.src="images/win.jpg";
- 	}
- 	else if (judge == 1) {
- 		document.winOrLose.src="images/lose.png";
- 	}
+ 		if (judge == 2){
+ 			document.winOrLose.src="images/win.jpg";
+ 				document.getElementById("win-sound").play();
+ 			numWin++;				// 勝った場合連勝数を増やす
+ 			point += numWin * 10;	// 勝った場合得点を連勝数分増やす
+ 		}
+ 		else if (judge == 1) {
+ 			document.winOrLose.src="images/lose.png";
+ 			document.getElementById("lose-sound").play();
+ 			numWin = 0;		// 負けた場合連勝数クリア
+ 			point -= 10;	// 負けた場合得点を減らす
+ 		}
  	
  	else {
  		document.winOrLose.src="images/even.jpg";
+ 		document.getElementById("even-sound").play();
+        }
+        	pointBox.value = point;		// 得点表示欄に得点を反映
+ 		numWinBox.value = numWin;	// 連勝数表示欄に連勝数を反映
+ 		startFlag = 0;			// 終了したので手を選べないように設定
+        }
  	}
- }
+ 
 
+
+ 
  
  </script>
  </body>
