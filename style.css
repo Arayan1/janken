@@ -1,14 +1,77 @@
-#comp {
-	width:800px;
-	margin-left: 70px;
-	margin-top: 50px;
-	height:40px
+body{
+width:100%;
+margin:0 auto;
 }
+#contents{
+margin:0px auto 0;
+width:1200px;
+background:#fff;
+border-radius:50%;
+}
+#comp {
+	margin-left:350px;
+	margin-top: 10px;
+		width: 900px;
+	font-weight:bold;
+	font-size:30px;
+}
+
 
 #you {
 	position:absolute;
-	width: 510px;
+	width: 450px;
 	text-align: right;
+	margin-bottom:0px;
+	float:left;
+	font-weight:bold;
+}
+
+img{
+clear:both;
+}
+.box{
+clear:both;
+width:780px;
+margin:30px 0 30px 290px;
+}
+.box_2{
+margin:0 0 30px 290px;
+}
+
+img.judge{
+display:block;
+padding:10px;
+background:#aaa;
+margin-left:250px;
 	margin-bottom: 50px;
-	vertical-align: 70px;
+	display:none;
+}
+h1{
+width:100%;
+font-weight:bold;
+color:#ff0000;
+text-align:center;
+margin:10px auto;
+font-size:30px;
+}
+h1.color{
+color:#aa3344;
+border-bottom:1px solid #aaccee;
+}
+form{
+width:100%;
+height:50px;
+margin:0px 0 0 0;
+box-sizing:border-box;
+-wekit-box-sizing:border-box;
+-mz-box-sizing:border-box;
+padding:0px 10px 80px 370px;
+}
+form p{
+float:left;
+margin:20px;
+}
+
+#judge{
+margin-left:500px;
 }
