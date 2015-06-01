@@ -4,8 +4,8 @@ margin:0 auto;
 }
 #contents{
 margin:0px auto 0;
-width:1200px;
-background:#fff;
+width:1250px;
+background:#ffffcc;
 border-radius:50%;
 }
 #comp {
@@ -56,7 +56,7 @@ font-size:30px;
 }
 h1.color{
 color:#aa3344;
-border-bottom:1px solid #aaccee;
+border-bottom:1px solid #ffcc66;
 }
 form{
 width:100%;

@@ -8,7 +8,7 @@
  <link rel="stylesheet" href="style.css">
  </head>
  
- <body bgcolor="#aaccee">
+ <body bgcolor="#ffcc66">
  
  <div id="contents">
  
@@ -17,7 +17,7 @@
  
    <img src="images/picture3.jpg" name="yourHand" width="200" height="207">
    
-     <img src="images/picture_start.jpg" width="200" height="207" onclick="changeStart()">
+     <img src="images/start.gif" width="200" height="207" onclick="changeStart()">
  <img src="images/picture3.jpg" name="compHand" width="200" height="207">
  </div><!--box2--->
  
@@ -25,11 +25,11 @@
  
   <h1 class="color">ここから選んでね！！</h1>
  <div class="box">
- <img src="images/picture0.jpg" width="200" height="207" onclick="changeStop(0)">
+ <img src="images/picture0.gif" width="200" height="207" onclick="changeStop(0)">
  
- <img src="images/picture1.jpg" width="200" height="207" onclick="changeStop(1)">
+ <img src="images/picture1.gif" width="200" height="207" onclick="changeStop(1)">
  
- <img src="images/picture2.jpg" width="200" height="207" onclick="changeStop(2)">
+ <img src="images/picture2.gif" width="200" height="207" onclick="changeStop(2)">
  </div><!--box"--->
  
  <img id="judge" src="images/win_or_lose.jpg" name="winOrLose" width="200" height="207" >
@@ -87,7 +87,7 @@
  function changeStart() {
  	startFlag = 1;	// 手を選べるように設定
  	num= Math.floor(Math.random()*3);
- 	document.compHand.src="images/picture" + num + ".jpg";
+ 	document.compHand.src="images/picture" + num + ".gif";
  	
  	timer = setTimeout("changeStart()",10);
  }
@@ -100,25 +100,25 @@
  function changeStop(i) {
  if (startFlag == 1) {	// 手が選べる状態のときのみ処理を行う
  		clearTimeout(timer);
- 		document.yourHand.src="images/picture" + i + ".jpg";
+ 		document.yourHand.src="images/picture" + i + ".gif";
  	
  		var judge = (i - num + 3) % 3;
  	
  		if (judge == 2){
- 			document.winOrLose.src="images/win.jpg";
+ 			document.winOrLose.src="images/win.gif";
  				document.getElementById("win-sound").play();
  			numWin++;				// 勝った場合連勝数を増やす
  			point += numWin * 10;	// 勝った場合得点を連勝数分増やす
  		}
  		else if (judge == 1) {
- 			document.winOrLose.src="images/lose.png";
+ 			document.winOrLose.src="images/lose.gif";
  			document.getElementById("lose-sound").play();
  			numWin = 0;		// 負けた場合連勝数クリア
  			point -= 10;	// 負けた場合得点を減らす
  		}
  	
  	else {
- 		document.winOrLose.src="images/even.jpg";
+ 		document.winOrLose.src="images/even.gif";
  		document.getElementById("even-sound").play();
         }
         	pointBox.value = point;		// 得点表示欄に得点を反映
